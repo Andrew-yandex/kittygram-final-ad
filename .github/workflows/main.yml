@@ -55,7 +55,7 @@ build_and_push_to_docker_hub:
         # Получение исходного кода из репозитория
         uses: actions/checkout@v4
       - name: Set up Docker Buildx
-        # Установка сборщика контейнеров Docker
+        #Установка сборщика контейнеров Docker
         uses: docker/setup-buildx-action@v3
       - name: Login to Docker 
         # Авторизация на Docker Hub
