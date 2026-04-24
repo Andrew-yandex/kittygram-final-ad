@@ -25,6 +25,7 @@ class CatsAPITestCase(TestCase):
             'name': 'Барсик',
             'color': 'Рыжий',
             'birth_year': 2020,
+            'owner': self.user.id,  # ← добавлено обязательное поле
             'achievements': []
         }
         response = self.client.post('/api/cats/', data=data)
