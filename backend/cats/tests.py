@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from rest_framework.test import APIClient
 
-from cats.models import Cat, Achievement
+from cats.models import Cat
 
 
 class CatsAPITestCase(TestCase):
