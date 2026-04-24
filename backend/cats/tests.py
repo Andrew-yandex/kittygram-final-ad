@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from rest_framework.test import APIClient
 
+from cats.models import Cat, Achievement
+
 
 class CatsAPITestCase(TestCase):
     def setUp(self):
@@ -13,6 +15,18 @@ class CatsAPITestCase(TestCase):
         self.client.force_authenticate(user=self.user)
 
     def test_list_exists(self):
-        """Проверка доступности списка задач."""
+        """Проверка доступности списка котиков."""
         response = self.client.get('/api/cats/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_cat_creation(self):
+        """Проверка создания котика."""
+        data = {
+            'name': 'Барсик',
+            'color': 'Рыжий',
+            'birth_year': 2020,
+            'achievements': []
+        }
+        response = self.client.post('/api/cats/', data=data)
+        self.assertEqual(response.status_code, HTTPStatus.CREATED)
+        self.assertTrue(Cat.objects.filter(name='Барсик').exists())

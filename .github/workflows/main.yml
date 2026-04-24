@@ -22,6 +22,8 @@ jobs:
           pip install ruff==0.8.0
           pip install -r ./backend/requirements.txt
       
-      - name: Lint with ruff
+      - name: Lint with ruff and run django tests
         run: |
           python -m ruff check backend/
+          cd backend/
+          python manage.py test
