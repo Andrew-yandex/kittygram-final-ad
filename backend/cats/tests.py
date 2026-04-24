@@ -25,8 +25,11 @@ class CatsAPITestCase(TestCase):
             'name': 'Барсик',
             'color': '#ff9900',
             'birth_year': 2020,
+            'owner': self.user.id,
             'achievements': []
         }
         response = self.client.post('/api/cats/', data=data)
+        print("Response status:", response.status_code)
+        print("Response data:", response.data)
         self.assertEqual(response.status_code, HTTPStatus.CREATED)
         self.assertTrue(Cat.objects.filter(name='Барсик').exists())
