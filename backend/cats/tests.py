@@ -23,9 +23,8 @@ class CatsAPITestCase(TestCase):
         """Проверка создания котика."""
         data = {
             'name': 'Барсик',
-            'color': '#ff9900',
+            'color': '#000000',
             'birth_year': 2020,
-            'owner': self.user.id,
             'achievements': []
         }
         response = self.client.post('/api/cats/', data=data)
